@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player
+  - Pit
+  - Pushable
+  - Red
+  - Win
+  - Threshold
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -11,6 +18,8 @@ TagManager:
   - 
   - Water
   - UI
+  - World
+  - 
   - 
   - 
   - 

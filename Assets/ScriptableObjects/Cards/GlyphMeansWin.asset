@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70a398d5ef6a9842b0eeb82e9e32206, type: 3}
+  m_Name: GlyphMeansWin
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  title: The Glyph
+  amendmentKind: 10
+  amendmentText: The glyph still means win.
+  erratumKind: 11
+  erratumText: The glyph is ink.
+  amendmentArt: {fileID: 5826410909707381162, guid: 9e7e777141a699d40b0c23b8a6d42787, type: 3}
+  erratumArt: {fileID: 5120940934649208145, guid: d7e47f5ea7bb04d47a4111b177717f31, type: 3}

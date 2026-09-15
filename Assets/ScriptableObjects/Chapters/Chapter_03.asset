@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7710bb01e4cd2d40b8bb5905bd2403c, type: 3}
+  m_Name: Chapter_03
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterData
+  id: ashroad
+  displayName: Chapter III — Ash Road
+  spawnPosition: {x: 2, y: 1.2, z: 0}
+  triad: {fileID: 11400000, guid: 22bb33cc44dd55ee66ff7788990011aa, type: 2}
+  prologue: "Beyond the wood the land was scabbed with red thorns, a second pillar
+    sweating ember-light. The Demon Lord's handwriting was in the soil now.\n\nAthena's
+    voice was quieter. Choose carefully. Some steps cannot be untaken."
+  deathLine: Ash took Theo. The book coughed out a black smudge, then a blank line.
+  tutorialText: Red thorns. Blessed Step walks them. Gaps still kill.
+  spawnCell: {x: 0, y: 0, z: 0}
+  persistRememberedWalls: 0
+  cameraPosition: {x: 0, y: 2, z: -10}
+  cameraOrthoSize: 6
+  boundsMin: {x: 0, y: 0}
+  boundsMax: {x: 0, y: 0}
+  entities: []
