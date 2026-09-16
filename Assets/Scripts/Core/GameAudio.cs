@@ -66,6 +66,7 @@ public class GameAudio : MonoBehaviour
 
     public void PlaySlice()
     {
+        if (sliceA == null || sliceB == null) EnsureClips();
         sliceFlip++;
         var clip = sliceFlip % 2 == 1 ? sliceA : sliceB;
         if (clip == null) clip = sliceA != null ? sliceA : sliceB;
@@ -146,9 +147,10 @@ public class GameAudio : MonoBehaviour
     {
         if (current != null) return current;
 #if UNITY_EDITOR
-        return AssetDatabase.LoadAssetAtPath<AudioClip>(path);
-#else
-        return current;
+        var editorClip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+        if (editorClip != null) return editorClip;
 #endif
+        var name = System.IO.Path.GetFileNameWithoutExtension(path);
+        return Resources.Load<AudioClip>(name) ?? Resources.Load<AudioClip>("Audio/" + name);
     }
 }

@@ -7641,8 +7641,8 @@ MonoBehaviour:
   pillarHurt: {fileID: 0}
   page: {fileID: 8300000, guid: ff0390b05692d2a41970173e9d381679, type: 3}
   wind: {fileID: 8300000, guid: d6c764e180bacca45ac5977840f3fb90, type: 3}
-  sliceA: {fileID: 0}
-  sliceB: {fileID: 0}
+  sliceA: {fileID: 8300000, guid: 182472e578e6ddf439af5fd5c36b6b73, type: 3}
+  sliceB: {fileID: 8300000, guid: 9c06b46a8973dbc4f9c7cbf8502e9636, type: 3}
 --- !u!82 &1009152104
 AudioSource:
   m_ObjectHideFlags: 0
