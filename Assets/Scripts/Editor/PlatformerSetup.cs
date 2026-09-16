@@ -146,11 +146,12 @@ public static class PlatformerSetup
         flashGo.SetActive(false);
 
         var dimGo = Ui("VisionDim", canvasGo.transform);
+        dimGo.transform.SetAsFirstSibling();
         Stretch(dimGo, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
         var dimImg = dimGo.AddComponent<Image>();
-        dimImg.color = new Color(0.02f, 0.02f, 0.05f, 0.72f);
+        dimImg.color = Color.black;
         dimImg.raycastTarget = false;
-        dimGo.SetActive(false);
+        dimImg.enabled = false;
         var vision = dimGo.AddComponent<VisionDimController>();
         vision.Bind(dimImg);
 
@@ -367,13 +368,10 @@ public static class PlatformerSetup
         for (int i = 0; i < count; i++)
         {
             var spike = VillageProp("Spike", parent, new Vector3(startX + i * 1.05f, y, 0f));
-            if (spike != null && spike.GetComponent<DeathZone>() == null)
-            {
-                var box = spike.GetComponent<BoxCollider2D>();
-                if (box != null) box.isTrigger = true;
+            if (spike == null) continue;
+            if (spike.GetComponent<DeathZone>() == null)
                 spike.AddComponent<DeathZone>().SetKind(HazardKind.Red);
-                SetLayer(spike, 0);
-            }
+            SetLayer(spike, 0);
         }
     }
 

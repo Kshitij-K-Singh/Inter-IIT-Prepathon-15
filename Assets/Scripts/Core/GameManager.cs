@@ -106,6 +106,9 @@ public class GameManager : MonoBehaviour
         CurrentChapterIndex = index;
         awaitingChoice = true;
         IsPlaying = false;
+        Time.timeScale = 1f;
+        if (deathPanel != null) deathPanel.SetActive(false);
+        rules.Clear();
         playerDeath?.ResetAlive();
         chapterController?.Load(index);
         TheoController.Instance?.Freeze();
@@ -138,7 +141,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         thresholdUI?.Close(false);
-        rules.RemoveAll(r => r.expiresEndOfChapter);
+        rules.RemoveAll(r => r.isErratum || r.expiresEndOfChapter);
         BindRules();
         constitutionBar?.Rebuild();
         RulesChanged?.Invoke();
@@ -191,8 +194,7 @@ public class GameManager : MonoBehaviour
 
     public void ContinueAfterDeath()
     {
-        if (deathPanel != null) deathPanel.SetActive(false);
-        RestartChapter();
+        StartChapter(CurrentChapterIndex);
     }
 
     public void RememberCell(Vector3Int cell) { }
@@ -248,9 +250,14 @@ public class GameManager : MonoBehaviour
 
     void ApplyVision()
     {
-        if (visionDimOverlay != null)
-            visionDimOverlay.SetActive(RuleBook.VisionDim() && !awaitingChoice);
-        VisionDimController.Instance?.Apply();
+        var dim = VisionDimController.Instance;
+        if (dim == null)
+        {
+            dim = FindFirstObjectByType<VisionDimController>(FindObjectsInactive.Include);
+            if (dim != null && !dim.gameObject.activeSelf)
+                dim.gameObject.SetActive(true);
+        }
+        dim?.Apply();
     }
 
     void ShowTitle()

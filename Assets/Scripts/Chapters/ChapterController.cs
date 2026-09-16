@@ -56,11 +56,27 @@ public class ChapterController : MonoBehaviour
                 if (world == null || !world.activeSelf) continue;
                 foreach (var pillar in world.GetComponentsInChildren<DemonPillar>(true))
                     pillar.ResetPillar();
+                ResetPhysics(world);
             }
         }
 
         theo?.Respawn(Current.spawnPosition);
         if (tutorialText != null)
             tutorialText.text = Current.tutorialText ?? string.Empty;
+    }
+
+    static void ResetPhysics(GameObject world)
+    {
+        var bodies = world.GetComponentsInChildren<Rigidbody2D>(true);
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            var rb = bodies[i];
+            if (rb == null) continue;
+            var rest = rb.GetComponent<PhysicsRestorer>();
+            if (rest == null)
+                rb.gameObject.AddComponent<PhysicsRestorer>();
+            else
+                rest.Restore();
+        }
     }
 }
